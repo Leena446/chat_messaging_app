@@ -1,4 +1,7 @@
+import 'package:chat/screens/signinOrSiginUp/signin_or_signup.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -7,7 +10,9 @@ class WelcomeScreen extends StatelessWidget {
       body: SafeArea(
           child: Column(
         children: [
+          Spacer(flex: 2,),
           Image.asset('assets/images/welcome_image.png'),
+          Spacer(flex: 3,),
           Text(
             'Welcome to our freedom \nmassaging app',
             textAlign: TextAlign.center,
@@ -16,6 +21,7 @@ class WelcomeScreen extends StatelessWidget {
                 .textTheme
                 .headline5.copyWith(fontWeight: FontWeight.bold),
           ),
+          Spacer(),
           Text(
             'Freedom talk any person of your \nmather language',
             textAlign: TextAlign.center,
@@ -23,19 +29,27 @@ class WelcomeScreen extends StatelessWidget {
               color: Theme.of(context).textTheme.bodyText1.color.withOpacity(0.64),
             ),
           ),
-          TextButton(onPressed: (){}, child: Row(
-            children: [
-              Text(
-                'Skip',
-                style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  color: Theme.of(context).textTheme.bodyText1.color.withOpacity(0.8),
+          Spacer(flex: 3,),
+          //used to fit the text and the icon with the text button
+          FittedBox(
+            child: TextButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder:(context) => SignInOrSignUp()),);
+            }, child: Row(
+              children: [
+                Text(
+                  'Skip',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    color: Theme.of(context).textTheme.bodyText1.color.withOpacity(0.8),
+                  ),
                 ),
-              ),
-              Icon(Icons.arrow_forward_ios,
-              size: 16,
-              color: Theme.of(context).textTheme.bodyText1.color.withOpacity(0.8),),
-            ],
-          ))
+                SizedBox(width: kDefaultPadding/4,),
+                Icon(Icons.arrow_forward_ios,
+                size: 16,
+                color: Theme.of(context).textTheme.bodyText1.color.withOpacity(0.8),),
+              ],
+            )),
+          )
         ],
       )),
     );
